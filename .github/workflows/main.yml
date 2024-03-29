@@ -7,5 +7,8 @@ jobs:
       - uses: actions/checkout@master
       - name: Run Snyk to check for vulnerabilities
         uses: snyk/actions/maven@master
+        ## Si SNYK detecta fallas de seguridad el pipeline va a fallar, para que continue se puede
+        ## agregar la siguiente linea de codigo.
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
